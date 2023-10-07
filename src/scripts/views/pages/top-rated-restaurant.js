@@ -1,6 +1,7 @@
 import RestaurantsSource from "../../data/restaurants-source";
 import "../templates/error-connection-template.js";
-import "../templates/list-top-rated-template";
+import "../templates/list-top-rated-template.js";
+import "../templates/loading-template.js";
 const TopRatedRestaurants = {
   async render() {
     return `
@@ -11,9 +12,12 @@ const TopRatedRestaurants = {
 
   async afterRender() {
     let restaurantContainer = document.querySelector(".list-top-rated");
-    const errorConnection = document.createElement("error-connection-template");
+    const loading = document.createElement("loading-template");
+    loading.render();
+    restaurantContainer.innerHTML = loading;
     try {
       const restaurants = await RestaurantsSource.getRestaurants();
+
       const restaurantContainer = document.querySelector(
         "list-top-rated-template"
       );
@@ -22,8 +26,12 @@ const TopRatedRestaurants = {
       );
       restaurantContainer.restaurants = topRatedRestaurant;
     } catch (error) {
+      const errorConnection = document.createElement(
+        "error-connection-template"
+      );
+      errorConnection.render();
       restaurantContainer.innerHTML = "";
-      restaurantContainer.innerHTML += errorConnection.render();
+      restaurantContainer.appendChild(errorConnection);
     }
   }
 };

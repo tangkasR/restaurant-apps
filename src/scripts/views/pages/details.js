@@ -51,7 +51,6 @@ const Detail = {
 
   async afterRender() {
     let mainContentDetail = document.querySelector("#main-content-detail");
-    const errorConnection = document.createElement("error-connection-template");
     try {
       const url = UrlParser.parseActiveUrlWithoutCombiner();
       const restaurant = await RestaurantsSource.detailRestaurant(url.id);
@@ -95,11 +94,16 @@ const Detail = {
         id: url.id.toString(),
         name: document.querySelector("#inputName"),
         review: document.querySelector("#inputReview"),
-        button: document.querySelector('#btnSave')
+        button: document.querySelector("#btnSave")
       });
     } catch (error) {
+      console.log('ERRROOOOOOOOOOORRRRRRRRRRR')
+      const errorConnection = document.createElement(
+        "error-connection-template"
+      );
+      errorConnection.render();
       mainContentDetail.innerHTML = "";
-      mainContentDetail.innerHTML += errorConnection.render();
+      mainContentDetail.appendChild(errorConnection);
     }
   }
 };

@@ -408,7 +408,7 @@ main{
         }
 
         .main-content{
-
+            width: 100%;
             #MenuAndlikeButtonContainer{
                 width: 100%;
                 display: flex;
@@ -646,6 +646,17 @@ main{
             }
         }
     }
+}
+.loading{
+    img{
+        width: 100px;
+    }
+}
+.loadingContainer{
+    display: none;
+}
+.loadingContainer.show{
+    display: block;
 }
 .error-message{
     font-weight: 1000;

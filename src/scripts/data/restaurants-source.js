@@ -1,5 +1,4 @@
 import API_ENDPOINT from "../globals/api-endpoint";
-
 class RestaurantsSource {
   static async getRestaurants() {
     try {

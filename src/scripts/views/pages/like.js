@@ -13,7 +13,6 @@ const Like = {
 
   async afterRender() {
     let favoriteContainer = document.querySelector("#main-content-favorite");
-    const errorConnection = document.createElement("error-connection-template");
     try {
       const restaurants = await FavoriteRestaurantsIdb.getAllRestaurants();
       const restaurantsContainer = document.querySelector(
@@ -21,8 +20,12 @@ const Like = {
       );
       restaurantsContainer.restaurants = restaurants;
     } catch (error) {
+      const errorConnection = document.createElement(
+        "error-connection-template"
+      );
+      errorConnection.render();
       favoriteContainer = "";
-      favoriteContainer += errorConnection.render();
+      favoriteContainer.appendChild(errorConnection);
     }
   }
 };

@@ -3,6 +3,7 @@ import RestaurantsSource from "../../data/restaurants-source";
 import "../templates/list-card-restaurants-template.js";
 import "../templates/error-connection-template.js";
 import "../templates/error-search-template.js";
+import "../templates/loading-template.js";
 import SearchInitiator from "../../utils/search-initiator";
 const Restaurants = {
   async render() {
@@ -20,31 +21,40 @@ const Restaurants = {
   },
 
   async afterRender() {
-    
     let mainContainerRestaurants = document.querySelector(
       "#main-content-restaurants"
     );
-    const errorConnection = document.createElement("error-connection-template");
     const errorSearchContent = document.createElement("error-search-template");
 
     try {
       const restaurants = await RestaurantsSource.getRestaurants();
-      console.log(restaurants);
-      const restaurantContainer = document.querySelector(
+
+      let loadingContainer = document.querySelector(".loadingContainer");
+      const loading = document.createElement("loading-template");
+      loading.render();
+      loadingContainer.appendChild(loading);
+      let restaurantContainer = document.querySelector(
         "list-card-restaurants-template"
       );
-
-      restaurantContainer.restaurants = restaurants;
+      if (restaurants.length === 0) {
+        loadingContainer.classList.add("show");
+      }else{
+        restaurantContainer.restaurants = restaurants;
+        loadingContainer.classList.remove("show");
+      }
 
       SearchInitiator.init({
         button: document.querySelector("#searchBtn"),
         container: restaurantContainer,
-        mainContainer: mainContainerRestaurants,
         errorSearchContent: errorSearchContent
       });
     } catch (error) {
+      const errorConnection = document.createElement(
+        "error-connection-template"
+      );
+      errorConnection.render();
       mainContainerRestaurants.innerHTML = "";
-      mainContainerRestaurants.innerHTML += errorConnection.render();
+      mainContainerRestaurants.appendChild(errorConnection);
     }
   }
 };

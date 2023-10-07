@@ -13,7 +13,7 @@
 <body>
   <header tabindex="-1">
     <section class="skip">
-      <a href="#searchInput" tabindex="0">
+      <a href="#mainContent" tabindex="0">
         Skip
       </a>
     </section>
@@ -21,7 +21,7 @@
     <button id="btnHamburger" class="header__menu"><img src="icons/hamburger-white.svg" alt="Navigation Button"></button>
     <nav class="nav" tabindex="-1" id="drawerNav">
       <ul>
-        <li><a href="index.html">Home</a></li>
+        <li><a href="/">Home</a></li>
         <li><a href="#/like">Favorite</a></li>
         <li><a href="https://github.com/tangkasR">About Us</a></li>
         <li><a href="#/top-rated">Top Rated Restaurant</a></li>
@@ -59,7 +59,8 @@
     <section class="tag" tabindex="-1">
       <p tabindex="-1">CHOOSE YOUR FAVORITE RESTAURANT</p>
     </section>
-    <section class="restoran-content" tabindex="-1">
+    <section class="restoran-content" tabindex="-1" id="restaurantContent">
+      <div class="loadingContainer"></div>
       <section class="main-content" id="mainContent">
       </section>
     </section>

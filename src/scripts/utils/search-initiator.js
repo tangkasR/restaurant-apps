@@ -1,20 +1,19 @@
 import RestaurantsSource from "../data/restaurants-source.js";
 
 const SearchInitiator = {
-  init({ button, container, mainContainer, errorSearchContent }) {
+  init({ button, container, errorSearchContent }) {
     button.addEventListener("click", () => {
       const searchValue = document.querySelector("#searchInput").value;
       console.log(searchValue);
       this._renderPage(
         searchValue,
         container,
-        mainContainer,
         errorSearchContent
       );
     });
   },
 
-  async _renderPage(searchValue, container, mainContainer, errorSearchContent) {
+  async _renderPage(searchValue, container, errorSearchContent) {
     const resultSearchRestaurant = await RestaurantsSource.searchRestaurant(
       searchValue
     );
@@ -22,9 +21,9 @@ const SearchInitiator = {
     if (resultSearchRestaurant.length !== 0) {
       container.restaurants = resultSearchRestaurant;
     } else {
-      mainContainer.innerHTML = "";
+      container.innerHTML = '';
       errorSearchContent.searchValue = searchValue;
-      mainContainer.appendChild(errorSearchContent);
+      container.appendChild(errorSearchContent);
     }
   }
 };
