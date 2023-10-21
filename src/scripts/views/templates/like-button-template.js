@@ -1,8 +1,9 @@
 class LikeButtonTemplate extends HTMLElement {
+  // eslint-disable-next-line no-useless-constructor
   constructor() {
     super();
   }
-  
+
   render() {
     this.innerHTML = `
         <button aria-label="like this restaurant" id="likeButton" class="like">
@@ -10,4 +11,4 @@ class LikeButtonTemplate extends HTMLElement {
     `;
   }
 }
-customElements.define("like-button-template", LikeButtonTemplate);
+customElements.define('like-button-template', LikeButtonTemplate);

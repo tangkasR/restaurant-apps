@@ -1,4 +1,5 @@
 class LikedButtonTemplate extends HTMLElement {
+  // eslint-disable-next-line no-useless-constructor
   constructor() {
     super();
   }
@@ -10,4 +11,4 @@ class LikedButtonTemplate extends HTMLElement {
     `;
   }
 }
-customElements.define("liked-button-template", LikedButtonTemplate);
+customElements.define('liked-button-template', LikedButtonTemplate);

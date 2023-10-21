@@ -1,4 +1,5 @@
-import API_ENDPOINT from "../globals/api-endpoint";
+import API_ENDPOINT from '../globals/api-endpoint';
+
 class RestaurantsSource {
   static async getRestaurants() {
     try {
@@ -33,11 +34,11 @@ class RestaurantsSource {
   static async inputReview(newReview) {
     try {
       const options = {
-        method: "POST",
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json"
+          'Content-Type': 'application/json',
         },
-        body: JSON.stringify(newReview)
+        body: JSON.stringify(newReview),
       };
 
       const response = await fetch(API_ENDPOINT.REVIEW, options);

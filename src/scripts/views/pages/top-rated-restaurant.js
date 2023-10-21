@@ -1,39 +1,41 @@
-import RestaurantsSource from "../../data/restaurants-source";
-import "../templates/error-connection-template.js";
-import "../templates/list-top-rated-template.js";
-import "../templates/loading-template.js";
+import RestaurantsSource from '../../data/restaurants-source';
+import '../templates/error-connection-template';
+import '../templates/list-top-rated-template';
+
 const TopRatedRestaurants = {
   async render() {
     return `
-        <list-top-rated-template class="list-top-rated">
+        <div class="loading-indicator"><img src="./icons/loading-noBG.gif"/></div>
+        <h1 class='top-rated-title'> Top Rated Restaurants</h1>
+        <list-top-rated-template class="list-top-rated" id="top-rated">
         </list-top-rated-template>
       `;
   },
 
   async afterRender() {
-    let restaurantContainer = document.querySelector(".list-top-rated");
-    const loading = document.createElement("loading-template");
-    loading.render();
-    restaurantContainer.innerHTML = loading;
+    // eslint-disable-next-line prefer-const
+    let restaurantContainer = document.querySelector('.list-top-rated');
+    const loadingIndicator = document.querySelector('.loading-indicator');
     try {
+      loadingIndicator.style.display = 'block';
       const restaurants = await RestaurantsSource.getRestaurants();
-
-      const restaurantContainer = document.querySelector(
-        "list-top-rated-template"
-      );
-      const topRatedRestaurant = restaurants.filter(
-        (restaurant) => restaurant.rating >= 4.5
-      );
-      restaurantContainer.restaurants = topRatedRestaurant;
+      if (restaurants.length !== 0) {
+        loadingIndicator.style.display = 'none';
+        // eslint-disable-next-line no-shadow
+        const restaurantContainer = document.querySelector('list-top-rated-template');
+        const topRatedRestaurant = restaurants.filter(
+          (restaurant) => restaurant.rating >= 4.5,
+        );
+        restaurantContainer.restaurants = topRatedRestaurant;
+      }
     } catch (error) {
-      const errorConnection = document.createElement(
-        "error-connection-template"
-      );
+      loadingIndicator.style.display = 'none';
+      const errorConnection = document.createElement('error-connection-template');
       errorConnection.render();
-      restaurantContainer.innerHTML = "";
+      restaurantContainer.innerHTML = '';
       restaurantContainer.appendChild(errorConnection);
     }
-  }
+  },
 };
 
 export default TopRatedRestaurants;

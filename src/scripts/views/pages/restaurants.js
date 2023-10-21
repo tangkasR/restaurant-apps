@@ -1,10 +1,9 @@
-import { async } from "regenerator-runtime";
-import RestaurantsSource from "../../data/restaurants-source";
-import "../templates/list-card-restaurants-template.js";
-import "../templates/error-connection-template.js";
-import "../templates/error-search-template.js";
-import "../templates/loading-template.js";
-import SearchInitiator from "../../utils/search-initiator";
+import RestaurantsSource from '../../data/restaurants-source';
+import '../templates/list-card-restaurants-template';
+import '../templates/error-connection-template';
+import '../templates/error-search-template';
+import SearchInitiator from '../../utils/search-initiator';
+
 const Restaurants = {
   async render() {
     return `
@@ -15,48 +14,45 @@ const Restaurants = {
             placeholder="Search Restaurant by Name and City" for="searchBtn">
         <button id="searchBtn" type="submit" aria-label="button search"></button>
         </section>
+        <div class="loading-indicator"><img src="./icons/loading-noBG.gif"/></div>
         <list-card-restaurants-template class="card-container"></list-card-restaurants-template>
       </div>
       `;
   },
 
   async afterRender() {
-    let mainContainerRestaurants = document.querySelector(
-      "#main-content-restaurants"
-    );
-    const errorSearchContent = document.createElement("error-search-template");
+    // eslint-disable-next-line prefer-const
+    let mainContainerRestaurants = document.querySelector(' #main-content-restaurants ');
+    const errorConnection = document.createElement('error-connection-template');
+    const errorSearch = document.createElement('error-search-template');
+    const loadingIndicator = mainContainerRestaurants.querySelector('.loading-indicator');
 
     try {
+      loadingIndicator.style.display = 'block';
+
       const restaurants = await RestaurantsSource.getRestaurants();
 
-      let loadingContainer = document.querySelector(".loadingContainer");
-      const loading = document.createElement("loading-template");
-      loading.render();
-      loadingContainer.appendChild(loading);
-      let restaurantContainer = document.querySelector(
-        "list-card-restaurants-template"
-      );
-      if (restaurants.length === 0) {
-        loadingContainer.classList.add("show");
-      }else{
-        restaurantContainer.restaurants = restaurants;
-        loadingContainer.classList.remove("show");
-      }
+      if (restaurants.length !== 0) {
+        loadingIndicator.style.display = 'none';
 
-      SearchInitiator.init({
-        button: document.querySelector("#searchBtn"),
-        container: restaurantContainer,
-        errorSearchContent: errorSearchContent
-      });
+        const restaurantContainer = document.querySelector('list-card-restaurants-template');
+
+        restaurantContainer.restaurants = restaurants;
+
+        SearchInitiator.init({
+          button: document.querySelector('#searchBtn'),
+          container: restaurantContainer,
+          mainContainer: mainContainerRestaurants,
+          errorSearchContent: errorSearch,
+        });
+      }
     } catch (error) {
-      const errorConnection = document.createElement(
-        "error-connection-template"
-      );
+      loadingIndicator.style.display = 'none';
       errorConnection.render();
-      mainContainerRestaurants.innerHTML = "";
+      mainContainerRestaurants.innerHTML = '';
       mainContainerRestaurants.appendChild(errorConnection);
     }
-  }
+  },
 };
 
 export default Restaurants;

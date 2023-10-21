@@ -1,6 +1,7 @@
-import CONFIG from "../../globals/config";
+import CONFIG from '../../globals/config';
 
 class CardRestaurantTemplate extends HTMLElement {
+  // eslint-disable-next-line no-useless-constructor
   constructor() {
     super();
   }
@@ -14,9 +15,7 @@ class CardRestaurantTemplate extends HTMLElement {
     this.innerHTML = `
         <div class="card" tabindex="-1">
             <p tabindex="0">${this._restaurant.city}</p>
-            <img tabindex="0" src="${
-              CONFIG.BASE_IMAGE_URL + this._restaurant.pictureId
-            }"
+            <img tabindex="0" src="${CONFIG.BASE_IMAGE_URL + this._restaurant.pictureId}"
             alt="gambar restaurant ${this._restaurant.name}"/>
             <p tabindex="0">Rating: ${this._restaurant.rating}</p>
             <p tabindex="0">
@@ -28,4 +27,4 @@ class CardRestaurantTemplate extends HTMLElement {
     `;
   }
 }
-customElements.define("card-restaurant-template", CardRestaurantTemplate);
+customElements.define('card-restaurant-template', CardRestaurantTemplate);

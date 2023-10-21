@@ -1,6 +1,5 @@
-import CONFIG from "../../globals/config";
-
 class ReviewTemplate extends HTMLElement {
+  // eslint-disable-next-line no-useless-constructor
   constructor() {
     super();
   }
@@ -13,11 +12,11 @@ class ReviewTemplate extends HTMLElement {
   render() {
     this.innerHTML = `
         <div class="reviewContent">
-            <p>Date: ${this._review.date}</p>
-            <p>Name: ${this._review.name}</p>
-            <p>Review: ${this._review.review}</p>
+            <p tabindex="0">Date: ${this._review.date}</p>
+            <p tabindex="0">Name: ${this._review.name}</p>
+            <p tabindex="0">Review: ${this._review.review}</p>
         </div>
     `;
   }
 }
-customElements.define("review-template", ReviewTemplate);
+customElements.define('review-template', ReviewTemplate);

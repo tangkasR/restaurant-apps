@@ -15,12 +15,48 @@ $danger-color: red;
         letter-spacing: 1px;
         line-height: 24px;
     }
+    &:focus{
+        border: 4px solid skyblue;
+
+    }
 }
 body{
     scroll-behavior: smooth;
     display: inline;
     overflow-x: hidden;
 
+}
+.skip{
+    min-width: fit-content;
+    height: 100%;
+    z-index: 10;
+    position: absolute;
+    top: 100px;
+    left: 20px;
+    background-color: $font-white;
+    border-radius: 10px;
+    padding: 10px;
+    border: 2px $font-black solid;
+    border: none;
+    opacity: 0;
+    a{
+        padding: 20px;
+        width: fit-content;
+        height: 44px;
+        font-size: 20px;
+        color: $font-black;
+        text-decoration: none;
+        font-weight: bolder;
+        border: none;
+    }
+
+    &:focus-within{
+        width: fit-content;
+        height: fit-content;
+        font-size: 20px;
+        opacity: 1;
+        border: 2px $secondary-color solid;
+    }
 }
 header{
     z-index: 1000;
@@ -33,39 +69,6 @@ header{
     align-items: center;
     width: 100%;
     box-shadow: 0 4px 8px 2px rgba(0,0,0,0.5);
-
-    .skip{
-        min-width: fit-content;
-        height: 100%;
-        z-index: 10;
-        position: absolute;
-        top: 100px;
-        left: 20px;
-        background-color: $font-white;
-        border-radius: 10px;
-        padding: 10px;
-        border: 2px $font-black solid;
-        border: none;
-        opacity: 0;
-        a{
-            padding: 20px;
-            width: fit-content;
-            height: 44px;
-            font-size: 20px;
-            color: $font-black;
-            text-decoration: none;
-            font-weight: bolder;
-            border: none;
-        }
-
-        &:focus-within{
-            width: fit-content;
-            height: fit-content;
-            font-size: 20px;
-            opacity: 1;
-            border: 2px $secondary-color solid;
-        }
-    }
     img{
         flex: 1;
         max-width: 50px;
@@ -294,8 +297,6 @@ main{
                 box-shadow: 0 4px 8px 2px rgba(0,0,0,0.5);
                 p{
                     margin: 5px 20px;
-                    text-align: justify;
-                    text-wrap: wrap;
                 }
                 p:nth-child(1){
                     max-width: fit-content;
@@ -323,28 +324,28 @@ main{
                     margin-bottom: 10px;
                 }
                 a{
+                    display: inline-block;
                     text-decoration: none;
                     color: $font-white;
-                    font-size:17px;
+                    font-size:25px;
+                    padding: 10px 0;
+                    min-height: 45px;
+                    min-width: 45px;
                     font-weight: bolder;
+                    line-height: 30px;
+                    text-wrap: wrap;
                     &:hover{
                         color: $font-black;
                     }
                 }
             }
         }
-
+        
         .list-top-rated{
             width: 100%;
             background-color: $secondary-color;
-            h1{
-                padding-top: 40px;
-                font-size: 35px;
-                font-weight: bolder;
-                color: $font-black;
-            }
             .container-top-rated{
-                padding: 20px 50px;
+                padding: 0 50px;
                 background-color: $secondary-color;    
                 display: flex;
                 flex-flow: row;
@@ -395,8 +396,10 @@ main{
                         }
                     }
                     a{
+                        display: inline-block;
                         text-decoration: none;
-                        font-size: 20px;
+                        padding: 15px 0;
+                        font-size: 25px;
                         font-weight: bold;
                         color: $font-black;
                         &:hover{
@@ -409,6 +412,16 @@ main{
 
         .main-content{
             width: 100%;
+            .top-rated-title{
+                width: 100%;
+                padding-top: 60px;
+                font-size: 30px;
+                font-weight: bolder;
+                color: $font-black;
+                background-color: $secondary-color;
+    
+            }
+
             #MenuAndlikeButtonContainer{
                 width: 100%;
                 display: flex;
@@ -441,6 +454,9 @@ main{
                         font-size: 15px;
                         font-weight: 500;
                         color: $font-white;
+                        &:focus{
+                            border: 6px solid skyblue;  
+                        }
                     }
                 }
                 #foodsContainer{
@@ -458,6 +474,9 @@ main{
                         font-size: 15px;
                         font-weight: 500;
                         color: $font-white;
+                        &:focus{
+                            border: 6px solid skyblue;  
+                        }
                     }
                 }
                 #btnLikeContainer{
@@ -478,6 +497,9 @@ main{
                             background-image: url('../public/icons/like-noBG.gif');
                             background-color: $secondary-color;
                         }
+                        &:focus{
+                            border: 6px solid skyblue;  
+                        }
                     }
                     .liked{
                         cursor: pointer;
@@ -491,6 +513,9 @@ main{
                         &:hover{
                             background-color: $font-white;
                             background-image: url('../public/icons/like-before-noBG.png');
+                        }
+                        &:focus{
+                            border: 6px solid skyblue;  
                         }
                     }
                 }
@@ -550,7 +575,7 @@ main{
                                 &:hover, &:focus{
                                     border: 2px solid $font-black;
                                     background-color: white;
-                                    color: $font-black;
+                                    color: $font-black; 
                                 }
                             }
                             button{
@@ -647,16 +672,12 @@ main{
         }
     }
 }
-.loading{
-    img{
-        width: 100px;
-    }
-}
-.loadingContainer{
-    display: none;
-}
-.loadingContainer.show{
-    display: block;
+
+.loading-indicator {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .error-message{
     font-weight: 1000;

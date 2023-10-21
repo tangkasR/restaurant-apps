@@ -1,6 +1,7 @@
-import CONFIG from "../../globals/config";
+import CONFIG from '../../globals/config';
 
 class TopRatedTemplate extends HTMLElement {
+  // eslint-disable-next-line no-useless-constructor
   constructor() {
     super();
   }
@@ -20,14 +21,13 @@ class TopRatedTemplate extends HTMLElement {
             </div>
             <div class="content-top-rated">
                 <p tabindex="0">Rating: ${this._restaurant.rating}</p>
-                <p tabindex="0">
                 <a href="/#/detail/${this._restaurant.id}">
                 ${this._restaurant.name}
-                </a></p>
+                </a>
                 <p tabindex="0">${this._restaurant.description}</p>
             </div>
         </div>
     `;
   }
 }
-customElements.define("top-rated-template", TopRatedTemplate);
+customElements.define('top-rated-template', TopRatedTemplate);
