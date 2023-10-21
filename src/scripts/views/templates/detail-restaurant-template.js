@@ -1,4 +1,6 @@
 import CONFIG from '../../globals/config';
+import 'lazysizes';
+import 'lazysizes/plugins/parent-fit/ls.parent-fit';
 
 class DetailRestaurantTemplate extends HTMLElement {
   // eslint-disable-next-line no-useless-constructor
@@ -17,7 +19,7 @@ class DetailRestaurantTemplate extends HTMLElement {
         <div id="category"></div>
         <div class="detailContent" tabindex="-1">
             <div class="imgDetail">
-                <img src="${CONFIG.BASE_IMAGE_URL + this._restaurant.pictureId}" 
+                <img class="lazyload" src="${CONFIG.BASE_IMAGE_URL + this._restaurant.pictureId}" 
                 alt="${this._restaurant.name}" />
             </div>
             <div class="information">

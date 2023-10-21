@@ -7,7 +7,10 @@ const Like = {
     return `
       <div id="main-content-favorite">
         <h1 tabindex="-1">Favorite Restaurant</h1>
-        <div class="loading-indicator"><img src="./icons/loading-noBG.gif"/></div>
+        <div class="loading-indicator">
+          <div class="loader">
+          </div>
+        </div>
         <list-card-restaurants-template class="card-container"></list-card-restaurants-template>
       </div>
       `;
@@ -16,31 +19,35 @@ const Like = {
   async afterRender() {
     // eslint-disable-next-line prefer-const
     let favoriteContainer = document.querySelector('#main-content-favorite');
-    const loadingIndicator = favoriteContainer.querySelector('.loading-indicator');
+    const loadingIndicator = favoriteContainer.querySelector(
+      '.loading-indicator'
+    );
     try {
-      loadingIndicator.style.display = 'block';
+      loadingIndicator.style.display = 'flex';
       const restaurants = await FavoriteRestaurantsIdb.getAllRestaurants();
 
       if (restaurants.length !== 0) {
         loadingIndicator.style.display = 'none';
         const restaurantsContainer = document.querySelector(
-          'list-card-restaurants-template',
+          'list-card-restaurants-template'
         );
         restaurantsContainer.restaurants = restaurants;
       } else {
         loadingIndicator.style.display = 'none';
-        favoriteContainer.innerHTML += 'Favorite Restaurant is Empty';
+        // eslint-disable-next-line operator-linebreak
+        favoriteContainer.innerHTML +=
+          '<h2 class="isEmpty" style="color:red;">Favorite Restaurant is Empty</h2>';
       }
     } catch (error) {
       loadingIndicator.style.display = 'none';
       const errorConnection = document.createElement(
-        'error-connection-template',
+        'error-connection-template'
       );
       errorConnection.render();
       favoriteContainer.innerHTML = '';
       favoriteContainer.appendChild(errorConnection);
     }
-  },
+  }
 };
 
 export default Like;

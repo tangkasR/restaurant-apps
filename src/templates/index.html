@@ -5,9 +5,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Restaurant Apps Starter Project</title>
-  <link rel="icon" href="./logo.png">
-  <link rel="manifest" href="./manifest.json">
-  <meta name="theme-color" content="#00000"/>
+  <link rel="icon" href="./logo_144.png">
+  <link rel="manifest" href="./manifest">
+  <meta name="theme-color" content="#00000" />
+  <meta name="description" content="Restaurant Apps">
 </head>
 
 <body>
@@ -17,8 +18,12 @@
     </a>
   </section>
   <header tabindex="-1">
-    <img src="images/heros/logo.png" alt="" />
-    <button id="btnHamburger" class="header__menu"><img src="icons/hamburger-white.svg" alt="Navigation Button"></button>
+    <picture>
+      <source media="(max-width: 600px)" srcset="images/logo-small.jpg">
+      <img style="border-radius: 50%;" class="lazyload" id="logo" src="images/logo-small.jpg" alt="" />
+    </picture>
+    <button id="btnHamburger" class="header__menu"><img src="icons/hamburger-white.svg"
+        alt="Navigation Button"></button>
     <nav class="nav" tabindex="-1" id="drawerNav">
       <ul>
         <li><a href="#/" tabindex="0">Home</a></li>
@@ -36,16 +41,28 @@
         <input type="radio" name="radio-btn" id="radio3" class="radioBtn" tabindex="-1">
         <input type="radio" name="radio-btn" id="radio4" class="radioBtn" tabindex="-1">
         <div class="slide first">
-          <img src="images/heros/hero-image_2.jpg" tabindex="-1"/>
+          <picture>
+            <source media="(max-width: 600px)" srcset="images/hero-image_2-small.jpg">
+            <img alt="" class="lazyload" src="images/hero-image_2-large.jpg" tabindex="-1" />
+          </picture>
         </div>
         <div class="slide">
-          <img src="images/heros/hero-image_3.jpg" tabindex="-1"/>
+          <picture>
+            <source media="(max-width: 600px)" srcset="images/hero-image_3-small.jpg">
+            <img alt="" class="lazyload" src="images/hero-image_3-large.jpg" tabindex="-1" />
+          </picture>
         </div>
         <div class="slide">
-          <img src="images/heros/hero-image_4.jpg" tabindex="-1"/>
+          <picture>
+            <source media="(max-width: 600px)" srcset="images/hero-image_4-small.jpg">
+            <img alt="" class="lazyload" src="images/hero-image_4-large.jpg" tabindex="-1" />
+          </picture>
         </div>
         <div class="slide">
-          <img src="images/heros/hero-image_1.jpg" tabindex="-1"/>
+          <picture>
+            <source media="(max-width: 600px)" srcset="images/hero-image_1-small.jpg">
+            <img alt="" class="lazyload" src="images/hero-image_1-large.jpg" tabindex="-1" />
+          </picture>
         </div>
         <div class="navigation-auto" tabindex="-1">
           <div class="auto-btn1" tabindex="-1"></div>

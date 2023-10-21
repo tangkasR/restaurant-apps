@@ -13,8 +13,8 @@ class ReviewTemplate extends HTMLElement {
     this.innerHTML = `
         <div class="reviewContent">
             <p tabindex="0">Date: ${this._review.date}</p>
-            <p tabindex="0">Name: ${this._review.name}</p>
-            <p tabindex="0">Review: ${this._review.review}</p>
+            <p tabindex="0" class="nameReview">Name: ${this._review.name}</p>
+            <p tabindex="0"class="contentReview">Review: ${this._review.review}</p>
         </div>
     `;
   }

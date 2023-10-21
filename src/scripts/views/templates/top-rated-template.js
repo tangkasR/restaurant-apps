@@ -1,4 +1,6 @@
 import CONFIG from '../../globals/config';
+import 'lazysizes';
+import 'lazysizes/plugins/parent-fit/ls.parent-fit';
 
 class TopRatedTemplate extends HTMLElement {
   // eslint-disable-next-line no-useless-constructor
@@ -16,7 +18,7 @@ class TopRatedTemplate extends HTMLElement {
         <div class="container-top-rated">
             <div class="img">
                 <p tabindex="0">${this._restaurant.city}</p>
-                <img src="${CONFIG.BASE_IMAGE_URL + this._restaurant.pictureId}" 
+                <img class="lazyload" src="${CONFIG.BASE_IMAGE_URL + this._restaurant.pictureId}" 
                 alt="${this._restaurant.name}" tabindex="0">
             </div>
             <div class="content-top-rated">

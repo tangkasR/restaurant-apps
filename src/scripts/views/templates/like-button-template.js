@@ -7,6 +7,7 @@ class LikeButtonTemplate extends HTMLElement {
   render() {
     this.innerHTML = `
         <button aria-label="like this restaurant" id="likeButton" class="like">
+        <img src="./icons/like-before-noBG.png" />
         </button>
     `;
   }
