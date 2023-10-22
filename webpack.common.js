@@ -31,8 +31,8 @@ module.exports = {
       ]
     }),
     new BundleAnalyzerPlugin({
-      analyzerMode: 'server',
-      openAnalyzer: true
+      analyzerMode: 'json',
+      openAnalyzer: false
     })
   ],
   optimization: {
