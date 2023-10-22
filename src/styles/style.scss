@@ -96,7 +96,7 @@ header{
             justify-content: right;
             align-items: center;
             gap: 3rem;
-        overflow-x: hidden;
+            overflow-x: hidden;
 
             li{
                 min-width: 50px;
@@ -289,66 +289,9 @@ main{
                 }
         }
         .card-container{
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-            align-content: center;
-            flex-wrap: wrap;
-            gap: 3rem;
-            .card{
-                border-radius: 10px 10px 10px 10px;
-                color: $font-white;
-                width: 250px;
-                max-width: 250px;
-                height: 100%;
-                background-color: $primary-color;
-                text-align: left;
-                box-shadow: 0 4px 8px 2px rgba(0,0,0,0.5);
-                p{
-                    margin: 5px 20px;
-                }
-                p:nth-child(1){
-                    max-width: fit-content;
-                    padding: 8px;
-                    color: $font-black;
-                    margin: 0;
-                    font-size: 15px;
-                    font-weight: bold;
-                    position: absolute;
-                    background-color: $secondary-color;
-                    z-index: 1;
-                    border-radius: 10px 0 0 0 ;
-                }
-                img{
-                    max-width: 100%;
-                    width: 400px;
-                    height: 300px;
-                    object-fit: cover;
-                    border-radius: 10px 10px 0 0;
-                }
-                p:nth-child(3){
-                    font-size: 15px;
-                    font-weight: 600;
-                }
-                p:nth-child(4){
-                    margin-bottom: 10px;
-                }
-                a{
-                    display: inline-block;
-                    text-decoration: none;
-                    color: $font-white;
-                    font-size:25px;
-                    padding: 10px 0;
-                    min-height: 45px;
-                    min-width: 45px;
-                    font-weight: bolder;
-                    line-height: 30px;
-                    text-wrap: wrap;
-                    &:hover{
-                        color: $font-black;
-                    }
-                }
-            }
+            width: 100%;
+            display: grid;
+            gap: 1rem;
         }
         
         .list-top-rated{
@@ -716,6 +659,132 @@ footer{
     padding: 20px;
     background-color: $font-black;
     color: $font-white;
+}
+
+@media screen and (min-width: 100px){
+    main{
+        .restoran-content{
+            .card-container{
+                grid-template-columns: auto;
+                .card{
+                    padding: 0;
+                    margin: 0 auto;
+                    border-radius: 10px 10px 10px 10px;
+                    color: $font-white;
+                    width: 90%;
+                    height: 100%;
+                    background-color: $primary-color;
+                    text-align: left;
+                    box-shadow: 0 4px 8px 2px rgba(0,0,0,0.5);
+                    p{
+                        margin: 5px 20px;
+                    }
+                    p:nth-child(1){
+                        max-width: fit-content;
+                        padding: 8px;
+                        color: $font-black;
+                        margin: 0;
+                        font-size: 15px;
+                        font-weight: bold;
+                        position: absolute;
+                        background-color: $secondary-color;
+                        z-index: 1;
+                        border-radius: 10px 0 0 0 ;
+                    }
+                    img{
+                        max-width: 100%;
+                        width: 400px;
+                        height: 300px;
+                        object-fit: cover;
+                        border-radius: 10px 10px 0 0;
+                    }
+                    p:nth-child(3){
+                        font-size: 15px;
+                        font-weight: 600;
+                    }
+                    p:nth-child(4){
+                        margin-bottom: 10px;
+                    }
+                    a{
+                        display: inline-block;
+                        text-decoration: none;
+                        color: $font-white;
+                        font-size:25px;
+                        padding: 10px 0;
+                        min-height: 45px;
+                        min-width: 45px;
+                        font-weight: bolder;
+                        line-height: 30px;
+                        text-wrap: wrap;
+                        &:hover{
+                            color: $font-black;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+}
+@media screen and (min-width: 450px){
+    main{
+        .restoran-content{
+            .card-container{
+                grid-template-columns: auto auto;
+                .card{
+                    width: 200px;
+                }
+            }
+        }
+    }
+}
+@media screen and (min-width: 600px){
+    main{
+        .restoran-content{
+            .card-container{
+                grid-template-columns: auto auto;
+                .card{
+                    width: 280px;
+                }
+            }
+        }
+    }
+}
+@media screen and (min-width: 750px){
+    main{
+        .restoran-content{
+            .card-container{
+                grid-template-columns: auto auto auto;
+                .card{
+                    width: 230px;
+                }
+            }
+        }
+    }
+}
+@media screen and (min-width: 900px){
+    main{
+        .restoran-content{
+            .card-container{
+                grid-template-columns: auto auto auto;
+                .card{
+                    width: 300px;
+                }
+            }
+        }
+    }
+}
+@media screen and (min-width: 1250px){
+    main{
+        .restoran-content{
+            .card-container{
+                grid-template-columns: auto auto auto auto;
+                .card{
+                    width: 300px;
+                }
+            }
+        }
+    }
 }
 @media screen and (max-width: 450px){
 

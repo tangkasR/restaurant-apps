@@ -6,7 +6,7 @@ Before(({ I }) => {
   I.amOnPage('/#/like');
 });
 
-Scenario('unliking one movie', async ({ I }) => {
+Scenario('unliking one restaurant', async ({ I }) => {
   I.see('Favorite Restaurant is Empty', '.isEmpty');
   I.amOnPage('/');
 

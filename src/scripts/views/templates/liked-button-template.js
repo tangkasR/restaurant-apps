@@ -1,13 +1,13 @@
 class LikedButtonTemplate extends HTMLElement {
   // eslint-disable-next-line no-useless-constructor
-  constructor() {
+  constructor () {
     super();
   }
 
-  render() {
+  render () {
     this.innerHTML = `
       <button aria-label="unlike this restaurant" id="likeButton" class="liked">
-      <img src="./icons/like-after-noBG.png" />
+      <img src="./icons/like-after-noBG.png" alt="btn like"/>
       </button>
     `;
   }

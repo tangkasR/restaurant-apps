@@ -9,7 +9,7 @@ Scenario('showing empty liked restaurants', ({ I }) => {
   I.see('Favorite Restaurant is Empty', '.isEmpty');
 });
 
-Scenario('liking one movie', async ({ I }) => {
+Scenario('liking one restaurant', async ({ I }) => {
   I.see('Favorite Restaurant is Empty', '.isEmpty');
   I.amOnPage('/');
 
