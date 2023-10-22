@@ -159,30 +159,40 @@ main{
             #radio4:checked ~ .first{
                 margin-left: -60%;
             }
-            #radio1:checked ~ .navigation-auto .auto-btn1{
-                background: $secondary-color;
-            }
-            #radio1:checked ~ .navigation-auto .auto-btn2{
-                background: $secondary-color;
-            }
-            #radio1:checked ~ .navigation-auto .auto-btn3{
-                background: $secondary-color;
-            }
-            #radio1:checked ~ .navigation-auto .auto-btn4{
-                background: $secondary-color;
-            }
             .slide{
                 z-index: 0;
 
                 width: 20%;
                 transition: 2s;
-                img{
+                .hero-image{
                     object-fit: cover;
                     min-width: 100%;
-                    width: 1000px;
+                    width: 100%;
                     min-height: 100%;
                     max-height: 550px;
                     height: fit-content;
+                    
+                }
+                .img1{
+                    background-position: center;
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                    background-image: url('../public/images/hero-image_2-small.jpg');
+                }
+                .img2{
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    background-image: url('../public/images/hero-image_3-small.jpg');
+                }
+                .img3{
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    background-image: url('../public/images/hero-image_4-small.jpg');
+                }
+                .img4{
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    background-image: url('../public/images/hero-image_1-small.jpg');
                 }
             }
 
@@ -848,6 +858,28 @@ footer{
         height: 60px;
     }
 }
+@media (min-width: 800px) {
+    main{
+        .slider{
+            .slides{
+                .slide{
+                    .img1{
+                        background-image: url('../public/images/hero-image_2-large.jpg');
+                    }
+                    .img2{
+                        background-image: url('../public/images/hero-image_3-large.jpg');
+                    }
+                    .img3{
+                        background-image: url('../public/images/hero-image_4-large.jpg');
+                    }
+                    .img4{
+                        background-image: url('../public/images/hero-image_1-large.jpg');
+                    }
+                }
+            }
+        }
+    }
+}
 @media screen and (max-width: 868px) {
     main{
         .restoran-content{
@@ -878,6 +910,9 @@ footer{
                                 font-size: 20px;
                                 font-weight: 600;
                             }
+                        }
+                        a{
+                            padding: 15px 30px;
                         }
                     }
                 }

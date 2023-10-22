@@ -1,7 +1,5 @@
 const { merge } = require('webpack-merge');
 // eslint-disable-next-line prefer-destructuring
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
-  .BundleAnalyzerPlugin;
 const WebpackPwaManifest = require('webpack-pwa-manifest');
 const WorkboxWebpackPlugin = require('workbox-webpack-plugin');
 // eslint-disable-next-line prefer-destructuring
@@ -47,10 +45,6 @@ module.exports = merge(common, {
     ]
   },
   plugins: [
-    new BundleAnalyzerPlugin({
-      analyzerMode: 'server',
-      openAnalyzer: true
-    }),
     new MiniCssExtractPlugin({ filename: 'assets/css/[hash].css' }),
     new HtmlWebpackInjectPreload({
       files: [
@@ -124,27 +118,6 @@ module.exports = merge(common, {
           preset: ['advanced']
         }
       })
-    ],
-    splitChunks: {
-      chunks: 'all',
-      minSize: 20000,
-      maxSize: 70000,
-      minChunks: 1,
-      maxAsyncRequests: 30,
-      maxInitialRequests: 30,
-      automaticNameDelimiter: '~',
-      enforceSizeThreshold: 50000,
-      cacheGroups: {
-        defaultVendors: {
-          test: /[\\/]node_modules[\\/]/,
-          priority: -10
-        },
-        default: {
-          minChunks: 2,
-          priority: -20,
-          reuseExistingChunk: true
-        }
-      }
-    }
+    ]
   }
 });
