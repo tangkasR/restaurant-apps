@@ -4,6 +4,7 @@ import '../styles/style.scss';
 import './views/slide-images/slideImg';
 import 'lazysizes';
 import 'lazysizes/plugins/parent-fit/ls.parent-fit';
+
 import swRegister from './utils/sw-register';
 
 import App from './views/app';
